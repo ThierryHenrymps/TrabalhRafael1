@@ -1,78 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulário de Cadastro</title>
-
-    <script>
-        // Alerta ao carregar a página
-        window.onload = function() {
-            alert("Bem vindo ao formulário de cadastro!");
+    <meta charset="utf-8">
+    <title> formulario de cadastro!</title>
+    
+    <style>
+        
+        h1{
+            background-color: blue;
         }
-
-        // Função para converter texto para maiúsculo
-        function maiusculo(elemento) {
-            elemento.value = elemento.value.toUpperCase();
+        form{
+            
+            background-color: black;
+            color:aliceblue;
         }
-
-        // Validação do formulário
-        function validarFormulario() {
-            let campos = document.querySelectorAll("input");
-
-            // 1. Nenhum campo pode estar vazio
-            for (let i = 0; i < campos.length; i++) {
-                if (campos[i].value.trim() === "") {
-                    alert("Todos os campos devem ser preenchidos!");
-                    return false;
-                }
-            }
-
-            let nome = document.getElementById("nome").value;
-            let ano = document.getElementById("ano").value;
-            let senha = document.getElementById("senha").value;
-            let confirmar = document.getElementById("confirmar").value;
-
-            // 2. Validação do ano
-            if (ano < 0 || ano >= 2026) {
-                alert("Ano de nascimento inválido!");
-                return false;
-            }
-
-            // 3. Senha não pode ser igual ao nome
-            if (senha === nome || confirmar === nome) {
-                alert("A senha não pode ser igual ao nome!");
-                return false;
-            }
-
-            // 4. Senhas devem ser iguais
-            if (senha !== confirmar) {
-                alert("As senhas não coincidem!");
-                return false;
-            }
-
-            alert("Formulário enviado com sucesso!");
-            return true;
-        }
-    </script>
+        
+    </style>
 </head>
+<div class="listrado"> </div>
+<i>Bem vindo ao formulario de cadastro!</i>
 
+<h1>tabela com dados do candidato</h1>
 <body>
-
-    <h2>Formulário de Cadastro</h2>
-
-    <form onsubmit="return validarFormulario()">
-        Nome: <input type="text" id="nome" oninput="maiusculo(this)"><br><br>
-        CPF: <input type="text" oninput="maiusculo(this)"><br><br>
-        Endereço: <input type="text" oninput="maiusculo(this)"><br><br>
-        Ano de Nascimento: <input type="number" id="ano"><br><br>
-        Telefone: <input type="text" oninput="maiusculo(this)"><br><br>
-        Estado: <input type="text" oninput="maiusculo(this)"><br><br>
-        Cidade: <input type="text" oninput="maiusculo(this)"><br><br>
-        Senha: <input type="password" id="senha" oninput="maiusculo(this)"><br><br>
-        Confirmação de Senha: <input type="password" id="confirmar" oninput="maiusculo(this)"><br><br>
-
-        <input type="submit" value="Cadastrar">
+    <div class="listrado"> </div>
+    <form>
+<p>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="Nome" required pattern="[A - Z+]" oninput="this.value = this.value.toUpperCase()">
+    
+</p>
+<p>
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" name="CPF">
+</p>
+<p>
+    <label for="email">Endereco</label>
+    <input type="endereco" id="endereco" name="endereco">
+</p>
+<p>
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" name="CPF">
+</p>
     </form>
-
 </body>
+
+
+
 </html>
