@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Cadastro</title>
+
+    <script>
+        // Alerta ao carregar a página
+        window.onload = function() {
+            alert("Bem vindo ao formulário de cadastro!");
+        }
+
+        // Função para converter texto para maiúsculo
+        function maiusculo(elemento) {
+            elemento.value = elemento.value.toUpperCase();
+        }
+
+        // Validação do formulário
+        function validarFormulario() {
+            let campos = document.querySelectorAll("input");
+
+            // 1. Nenhum campo pode estar vazio
+            for (let i = 0; i < campos.length; i++) {
+                if (campos[i].value.trim() === "") {
+                    alert("Todos os campos devem ser preenchidos!");
+                    return false;
+                }
+            }
+
+            let nome = document.getElementById("nome").value;
+            let ano = document.getElementById("ano").value;
+            let senha = document.getElementById("senha").value;
+            let confirmar = document.getElementById("confirmar").value;
+
+            // 2. Validação do ano
+            if (ano < 0 || ano >= 2026) {
+                alert("Ano de nascimento inválido!");
+                return false;
+            }
+
+            // 3. Senha não pode ser igual ao nome
+            if (senha === nome || confirmar === nome) {
+                alert("A senha não pode ser igual ao nome!");
+                return false;
+            }
+
+            // 4. Senhas devem ser iguais
+            if (senha !== confirmar) {
+                alert("As senhas não coincidem!");
+                return false;
+            }
+
+            alert("Formulário enviado com sucesso!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Formulário de Cadastro</h2>
+
+    <form onsubmit="return validarFormulario()">
+        Nome: <input type="text" id="nome" oninput="maiusculo(this)"><br><br>
+        CPF: <input type="text" oninput="maiusculo(this)"><br><br>
+        Endereço: <input type="text" oninput="maiusculo(this)"><br><br>
+        Ano de Nascimento: <input type="number" id="ano"><br><br>
+        Telefone: <input type="text" oninput="maiusculo(this)"><br><br>
+        Estado: <input type="text" oninput="maiusculo(this)"><br><br>
+        Cidade: <input type="text" oninput="maiusculo(this)"><br><br>
+        Senha: <input type="password" id="senha" oninput="maiusculo(this)"><br><br>
+        Confirmação de Senha: <input type="password" id="confirmar" oninput="maiusculo(this)"><br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+</body>
+</html>
